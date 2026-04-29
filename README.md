@@ -5,8 +5,6 @@ This project is am online store backend built using Python and object-oriented p
 It allows users to view products, add them to a cart, and create orders. 
 The project also uses JSON to store data and includes a basic graphical user interface built with Tkinter.
 
----
-
 ### Features
 
 - Product management (name, price, quantity, category)
@@ -16,16 +14,12 @@ The project also uses JSON to store data and includes a basic graphical user int
 - JSON data storage (save and load products)
 - Graphical User Interface (Tkinter)
 
----
-
 ### Technologies
 
 - Python
 - Object-Oriented Programming (OOP)
 - JSON
 - Tkinter (GUI)
-
----
 
 ### Project Structure
 
@@ -35,16 +29,12 @@ The project also uses JSON to store data and includes a basic graphical user int
 - services.py — business logic and JSON handling  
 - products.json — data storage  
 
----
-
 ### OOP Concepts Used
 
 - Encapsulation  
 - Inheritance (Customer, Admin)  
 - Composition (User → Cart → Products)  
 - Project is divided into models, services, and GUI files
-
----
 
 ### Future Improvements
 
