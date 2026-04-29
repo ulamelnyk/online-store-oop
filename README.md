@@ -1,4 +1,4 @@
-Online Store (OOP Project)
+## Online Store (OOP Project)
 
 ### Description
 This project is am online store backend built using Python and object-oriented programming (OOP). 
