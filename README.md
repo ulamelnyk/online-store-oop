@@ -1,13 +1,13 @@
 Online Store (OOP Project)
 
-## Description
+### Description
 This project is am online store backend built using Python and object-oriented programming (OOP). 
 It allows users to view products, add them to a cart, and create orders. 
 The project also uses JSON to store data and includes a basic graphical user interface built with Tkinter.
 
 ---
 
-## Features
+### Features
 
 - Product management (name, price, quantity, category)
 - Cart functionality (add/remove products, calculate total)
@@ -18,7 +18,7 @@ The project also uses JSON to store data and includes a basic graphical user int
 
 ---
 
-## Technologies
+### Technologies
 
 - Python
 - Object-Oriented Programming (OOP)
@@ -27,7 +27,7 @@ The project also uses JSON to store data and includes a basic graphical user int
 
 ---
 
-## Project Structure
+### Project Structure
 
 - app.py — graphical user interface  
 - main.py — application entry point  
@@ -37,7 +37,7 @@ The project also uses JSON to store data and includes a basic graphical user int
 
 ---
 
-## OOP Concepts Used
+### OOP Concepts Used
 
 - Encapsulation  
 - Inheritance (Customer, Admin)  
@@ -46,7 +46,7 @@ The project also uses JSON to store data and includes a basic graphical user int
 
 ---
 
-## Future Improvements
+### Future Improvements
 
 - Enhanced GUI features  
 - Better product filtering  
