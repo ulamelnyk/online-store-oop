@@ -23,11 +23,11 @@ The project also uses JSON to store data and includes a basic graphical user int
 
 ### Project Structure
 
-- app.py — graphical user interface  
-- main.py — application entry point  
-- models.py — classes (Product, Cart, Order, User)  
-- services.py — business logic and JSON handling  
-- products.json — data storage  
+- app.py - graphical user interface  
+- main.py - application entry point  
+- models.py - classes (Product, Cart, Order, User)  
+- services.py - business logic and JSON handling  
+- products.json - data storage  
 
 ### OOP Concepts Used
 
