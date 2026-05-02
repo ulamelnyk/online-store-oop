@@ -36,6 +36,13 @@ The project also uses JSON to store data and includes a basic graphical user int
 - Composition (User → Cart → Products)  
 - Project is divided into models, services, and GUI files
 
+### How to Run
+
+1. Clone the repository:
+    git clone https://github.com/ulamelnyk/online-store-oop.git
+2. Open the project in PyCharm.
+3. Run main.py.
+
 ### Future Improvements
 
 - Enhanced GUI features  
