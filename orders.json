@@ -1,0 +1,53 @@
+[
+    {
+        "products": [
+            {
+                "name": "iPhone",
+                "price": 1000,
+                "quantity": 5,
+                "category": "Electronics"
+            },
+            {
+                "name": "Book",
+                "price": 20,
+                "quantity": 50,
+                "category": "Books"
+            }
+        ],
+        "total": 1020
+    },
+    {
+        "products": [
+            {
+                "name": "Headphones",
+                "price": 200,
+                "quantity": 10,
+                "category": "Electronics"
+            }
+        ],
+        "total": 200
+    },
+    {
+        "products": [
+            {
+                "name": "Laptop",
+                "price": 1500,
+                "quantity": 3,
+                "category": "Electronics"
+            },
+            {
+                "name": "Book",
+                "price": 20,
+                "quantity": 50,
+                "category": "Books"
+            },
+            {
+                "name": "Headphones",
+                "price": 200,
+                "quantity": 10,
+                "category": "Electronics"
+            }
+        ],
+        "total": 1720
+    }
+]
