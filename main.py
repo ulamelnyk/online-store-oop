@@ -1,47 +1,54 @@
 from models import Product, Customer
-from services import ShopService, JsonService
+from services import ShopService, JsonService, OrderJsonService
 
-service = ShopService()
-json_service = JsonService()
+if __name__ == "__main__":
+    service = ShopService()
+    json_service = JsonService()
+    order_service = OrderJsonService()
 
-product1 = Product("iPhone", 1000, 5, "Electronics")
-product2 = Product("Laptop", 1500, 3, "Electronics")
-product3 = Product("Book", 20, 50, "Books")
-product4 = Product("Headphones", 200, 10, "Electronics")
+    product1 = Product("iPhone", 1000, 5, "Electronics")
+    product2 = Product("Laptop", 1500, 3, "Electronics")
+    product3 = Product("Book", 20, 50, "Books")
+    product4 = Product("Headphones", 200, 10, "Electronics")
 
-products = [product1, product2, product3, product4]
+    products = [product1, product2, product3, product4]
 
-json_service.save_products(products, "products.json")
+    json_service.save_products(products, "products.json")
 
-loaded_products = json_service.load_products("products.json")
+    loaded_products = json_service.load_products("products.json")
 
-user1 = Customer("Anna", "anna@mail.com", "Warsaw")
-user2 = Customer("Tom", "tom@mail.com", "Berlin")
+    user1 = Customer("Anna", "anna@mail.com", "Warsaw")
+    user2 = Customer("Tom", "tom@mail.com", "Berlin")
 
-user1.cart.add_product(loaded_products[0])
-user1.cart.add_product(loaded_products[2])
+    user1.cart.add_product(loaded_products[0])
+    user1.cart.add_product(loaded_products[2])
 
-order1 = service.create_order(user1)
+    order1 = service.create_order(user1)
 
-user1.cart.add_product(loaded_products[3])
-order2 = service.create_order(user1)
+    user1.cart.add_product(loaded_products[3])
+    order2 = service.create_order(user1)
 
-user2.cart.add_product(loaded_products[1])
-user2.cart.add_product(loaded_products[2])
-user2.cart.add_product(loaded_products[3])
+    user2.cart.add_product(loaded_products[1])
+    user2.cart.add_product(loaded_products[2])
+    user2.cart.add_product(loaded_products[3])
 
-order3 = service.create_order(user2)
+    order3 = service.create_order(user2)
 
-print(f"{user1.username}'s orders:")
-for o in user1.view_orders():
-    print("Total:", o.total)
-    for product in o.products:
-        print(product)
-    print()
+    print(f"{user1.username}'s orders:")
+    for o in user1.view_orders():
+        print("Total:", o.total)
+        for product in o.products:
+            print(product)
+        print()
 
-print(f"{user2.username}'s orders:")
-for o in user2.view_orders():
-    print("Total:", o.total)
-    for product in o.products:
-        print(product)
-    print()
+    print(f"{user2.username}'s orders:")
+    for o in user2.view_orders():
+        print("Total:", o.total)
+        for product in o.products:
+            print(product)
+        print()
+
+orders = [order1, order2, order3]
+order_service.save_order(orders, "orders.json")
+order_service.save_order(orders, "orders.json")
+loaded_orders = (order_service.load_order("orders.json"))
