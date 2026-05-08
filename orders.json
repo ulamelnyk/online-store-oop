@@ -2,52 +2,58 @@
     {
         "products": [
             {
-                "name": "iPhone",
-                "price": 1000,
-                "quantity": 5,
-                "category": "Electronics"
+                "id": 1,
+                "name": "Notebook",
+                "price": 10,
+                "quantity": 50,
+                "category": "Notebooks"
             },
             {
-                "name": "Book",
+                "id": 3,
+                "name": "Calendar",
                 "price": 20,
                 "quantity": 50,
-                "category": "Books"
+                "category": "Notebooks"
             }
         ],
-        "total": 1020
+        "total": 30
     },
     {
         "products": [
             {
-                "name": "Headphones",
-                "price": 200,
-                "quantity": 10,
-                "category": "Electronics"
+                "id": 4,
+                "name": "Gel Pens Set",
+                "price": 5,
+                "quantity": 100,
+                "category": "Writing Tools"
             }
         ],
-        "total": 200
+        "total": 5
     },
     {
         "products": [
             {
-                "name": "Laptop",
-                "price": 1500,
-                "quantity": 3,
-                "category": "Electronics"
+                "id": 2,
+                "name": "Daily Planner",
+                "price": 15,
+                "quantity": 30,
+                "category": "Notebooks"
             },
             {
-                "name": "Book",
+                "id": 3,
+                "name": "Calendar",
                 "price": 20,
                 "quantity": 50,
-                "category": "Books"
+                "category": "Notebooks"
             },
             {
-                "name": "Headphones",
-                "price": 200,
-                "quantity": 10,
-                "category": "Electronics"
+                "id": 4,
+                "name": "Gel Pens Set",
+                "price": 5,
+                "quantity": 100,
+                "category": "Writing Tools"
             }
         ],
-        "total": 1720
+        "total": 40
     }
 ]
