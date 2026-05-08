@@ -6,12 +6,26 @@ if __name__ == "__main__":
     json_service = JsonService()
     order_service = OrderJsonService()
 
-    product1 = Product("iPhone", 1000, 5, "Electronics")
-    product2 = Product("Laptop", 1500, 3, "Electronics")
-    product3 = Product("Book", 20, 50, "Books")
-    product4 = Product("Headphones", 200, 10, "Electronics")
+    # All products:
+    # Notebooks
+    product1 = Product(1,"Notebook", 10, 50, "Notebooks")
+    product2 = Product(2, "Daily Planner", 15, 30, "Notebooks")
+    product3 = Product(3, "Calendar", 20, 50, "Notebooks")
 
-    products = [product1, product2, product3, product4]
+    # Writing Tools
+    product4 = Product(4, "Gel Pens Set", 5, 100, "Writing Tools")
+    product5 = Product(5, "Highlighters Set", 5, 100, "Writing Tools")
+
+    # Accessories
+    product6 = Product(6, "Pencil Case", 10, 50, "Accessories")
+    product7 = Product(7, "Desk Organizer", 15, 60, "Accessories")
+
+    # Decor
+    product8 = Product(8, "Stickers Pack", 5, 100, "Decor")
+    product9 = Product(9, "Washi Tape Set", 10, 50, "Decor")
+    product10 = Product(10, "Sticky Notes", 7, 50, "Decor")
+
+    products = [product1, product2, product3, product4, product5, product6, product7, product8, product9, product10]
 
     json_service.save_products(products, "products.json")
 
