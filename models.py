@@ -1,11 +1,13 @@
 class Product:
     def __init__(
             self,
+            id: int,
             name: str,
             price: float,
             quantity: int,
             category: str
     ) -> None:
+        self.id = id
         self.name = name
         self.price = price
         self.quantity = quantity
@@ -16,6 +18,7 @@ class Product:
 
     def to_dict(self) -> dict:
         return{
+            "id": self.id,
             "name": self.name,
             "price": self.price,
             "quantity": self.quantity,
@@ -25,6 +28,7 @@ class Product:
     @staticmethod
     def from_dict(data: dict) -> "Product":
         return Product(
+            data["id"],
             data["name"],
             data["price"],
             data["quantity"],
