@@ -6,7 +6,13 @@ class ShopService:
     def create_order(self, user: User) -> Order:
         products = user.cart.items.copy()
         total = user.cart.get_total()
-        order = Order(products, total)
+        order = Order(
+            user.username,
+            user.email,
+            user.address,
+            products,
+            total
+        )
         user.add_order(order)
         user.cart.items.clear()
         return order
@@ -38,10 +44,19 @@ class OrderJsonService:
             order: list[Order],
             filename: str
     ) -> None:
-        data = [product.to_dict() for product in order]
+
+        try:
+            with open(filename, "r") as file:
+                existing_data = json.load(file)
+        except FileNotFoundError:
+            existing_data = []
+
+        new_data = [item.to_dict() for item in order]
+
+        existing_data.extend(new_data)
 
         with open(filename, "w") as file:
-            json.dump(data, file, indent=4)
+            json.dump(existing_data, file, indent=4)
 
     def load_order(
             self,
