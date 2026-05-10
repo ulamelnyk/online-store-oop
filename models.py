@@ -13,6 +13,15 @@ class Product:
         self.quantity = quantity
         self.category = category
 
+        if not isinstance(name, str):
+            raise TypeError("Product name must be a string")
+
+        if price < 0:
+            raise ValueError("Price must be greater than 0")
+
+        if quantity < 0:
+            raise ValueError("Quantity cannot be negative")
+
     def __str__(self) -> str:
         return f"{self.name} - {self.price}"
 
@@ -90,6 +99,15 @@ class User:
         self.address = address
         self.cart = Cart()
         self.orders = []
+
+        if not username:
+            raise ValueError("Username cannot be empty")
+
+        if "@" not in email:
+            raise ValueError("Invalid email format")
+
+        if not address:
+            raise ValueError("Address cannot be empty")
 
     def add_order(self, order: Order) -> None:
         self.orders.append(order)
