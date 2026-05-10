@@ -4,13 +4,11 @@ class Product:
             id: int,
             name: str,
             price: float,
-            quantity: int,
             category: str
     ) -> None:
         self.id = id
         self.name = name
         self.price = price
-        self.quantity = quantity
         self.category = category
 
         if not isinstance(name, str):
@@ -18,9 +16,6 @@ class Product:
 
         if price < 0:
             raise ValueError("Price must be greater than 0")
-
-        if quantity < 0:
-            raise ValueError("Quantity cannot be negative")
 
     def __str__(self) -> str:
         return f"{self.name} - {self.price}"
@@ -30,7 +25,6 @@ class Product:
             "id": self.id,
             "name": self.name,
             "price": self.price,
-            "quantity": self.quantity,
             "category": self.category
         }
 
@@ -40,9 +34,9 @@ class Product:
             data["id"],
             data["name"],
             data["price"],
-            data["quantity"],
             data["category"],
         )
+
 
 class Cart:
     def __init__(self) -> None:
@@ -62,14 +56,23 @@ class Cart:
 class Order:
     def __init__(
             self,
+            name: str,
+            email: str,
+            address: str,
             products: list[Product],
             total: float
     ) -> None:
+        self.name = name
+        self.email = email
+        self.address = address
         self.products = products
         self.total = total
 
     def to_dict(self) -> dict:
         return {
+            "name": self.name,
+            "email": self.email,
+            "address": self.address,
             "products": [product.to_dict() for product in self.products],
             "total": self.total
         }
@@ -82,6 +85,9 @@ class Order:
         ]
 
         return Order(
+            data["name"],
+            data["email"],
+            data["address"],
             products,
             data["total"]
         )
@@ -115,6 +121,7 @@ class User:
     def view_orders(self) -> list:
         return self.orders
 
+
 class Customer(User):
     def __init__(
             self,
@@ -123,6 +130,7 @@ class Customer(User):
             address: str
     ) -> None:
         super().__init__(username, email, address)
+
 
 class Admin(User):
     def __init__(
