@@ -3,70 +3,60 @@
         "id": 1,
         "name": "Notebook",
         "price": 10,
-        "quantity": 50,
         "category": "Notebooks"
     },
     {
         "id": 2,
         "name": "Daily Planner",
         "price": 15,
-        "quantity": 30,
         "category": "Notebooks"
     },
     {
         "id": 3,
         "name": "Calendar",
         "price": 20,
-        "quantity": 50,
         "category": "Notebooks"
     },
     {
         "id": 4,
         "name": "Gel Pens Set",
         "price": 5,
-        "quantity": 100,
         "category": "Writing Tools"
     },
     {
         "id": 5,
         "name": "Highlighters Set",
         "price": 5,
-        "quantity": 100,
         "category": "Writing Tools"
     },
     {
         "id": 6,
         "name": "Pencil Case",
         "price": 10,
-        "quantity": 50,
         "category": "Accessories"
     },
     {
         "id": 7,
         "name": "Desk Organizer",
         "price": 15,
-        "quantity": 60,
         "category": "Accessories"
     },
     {
         "id": 8,
         "name": "Stickers Pack",
         "price": 5,
-        "quantity": 100,
         "category": "Decor"
     },
     {
         "id": 9,
         "name": "Washi Tape Set",
         "price": 10,
-        "quantity": 50,
         "category": "Decor"
     },
     {
         "id": 10,
         "name": "Sticky Notes",
         "price": 7,
-        "quantity": 50,
         "category": "Decor"
     }
 ]
