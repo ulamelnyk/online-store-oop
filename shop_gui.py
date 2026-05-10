@@ -1,8 +1,10 @@
 import customtkinter as ctk
-from models import Product, Customer
-from services import ShopService
+from models import Customer
+from services import ShopService, JsonService, OrderJsonService
 
 service = ShopService()
+json_service = JsonService()
+order_json_service = OrderJsonService()
 current_user = None
 
 root = ctk.CTk()
@@ -27,38 +29,12 @@ def submit():
 
     current_user = Customer(username, email, address)
 
-    print(f"User created: {username}")
+    print(f"Hello, {username}!")
 
     username_entry.delete(0, "end")
     email_entry.delete(0, "end")
     address_entry.delete(0, "end")
 
-def products():
-    global current_user
-
-    if current_user is None:
-        print("Please create a user first")
-        return
-
-    if check1.get() == "on":
-        laptop = Product("Laptop", 1500, 3, "Electronics")
-        current_user.cart.add_product(laptop)
-
-    if check2.get() == "on":
-        phone = Product("Phone", 1000, 5, "Electronics")
-        current_user.cart.add_product(phone)
-
-    if check3.get() == "on":
-        tablet = Product("Tablet", 800, 4, "Electronics")
-        current_user.cart.add_product(tablet)
-
-    order = service.create_order(current_user)
-
-    print("Order created!")
-    print("Total:", order.total)
-
-    for product in order.products:
-        print(product)
 
 username_entry = ctk.CTkEntry(main_frame,
     placeholder_text="Username",
@@ -97,64 +73,96 @@ submit_btn = ctk.CTkButton(
 )
 submit_btn.pack(pady=20)
 
-# Products
-title_products = ctk.CTkLabel(
+
+# Product cards
+products_frame = ctk.CTkFrame(
     main_frame,
-    text="Choose products",
-    font=("Arial", 20),
-    text_color="black"
+    fg_color="transparent"
 )
-title_products.pack(pady=10)
+products_frame.pack(pady=20)
 
-check1 = ctk.StringVar(value="off")
-check2 = ctk.StringVar(value="off")
-check3 = ctk.StringVar(value="off")
 
-checkbox1 = ctk.CTkCheckBox(
+def add_to_cart(product):
+    global current_user
+
+    if current_user is None:
+        print("Please create user first")
+        return
+
+    current_user.cart.add_product(product)
+    print(f"{product.name} added to cart")
+
+
+loaded_products = json_service.load_products("products.json")
+
+
+for index, product in enumerate(loaded_products):
+    row = index // 2
+    column = index % 2
+
+    product_card = ctk.CTkFrame(
+        products_frame,
+        width=180,
+        height=180,
+        fg_color="#FFE6EE"
+    )
+    product_card.grid(row=row, column=column, padx=10, pady=10)
+
+    ctk.CTkLabel(
+        product_card,
+        text=product.name,
+        text_color="black"
+    ).pack(pady=(15, 5))
+
+    ctk.CTkLabel(
+        product_card,
+        text=f"${product.price}",
+        text_color="black"
+    ).pack(pady=5)
+
+    ctk.CTkLabel(
+        product_card,
+        text=product.category,
+        text_color="black"
+    ).pack(pady=5)
+
+    ctk.CTkButton(
+        product_card,
+        text="Add to cart",
+        command=lambda p=product: add_to_cart(p),
+        fg_color="#FF7CB0",
+        text_color="white",
+        width=100,
+        height=35
+    ).pack(pady=(10, 25))
+
+
+def create_order():
+    global current_user
+
+    if current_user is None:
+        print("Please create user first")
+        return
+
+    if not current_user.cart.items:
+        print("Cart is empty")
+        return
+
+    order = service.create_order(current_user)
+
+    orders = current_user.view_orders()
+    order_json_service.save_order(
+        orders,
+        "orders.json"
+    )
+
+    print(f"Order created! Total: ${order.total}")
+
+create_order_btn = ctk.CTkButton(
     main_frame,
-    text="Laptop",
-    variable=check1,
-    onvalue="on",
-    offvalue="off",
-    text_color="black",
-    fg_color="#FE019A",
-    border_color="#FE019A"
-)
-checkbox1.pack(pady=5)
-
-checkbox2 = ctk.CTkCheckBox(
-    main_frame,
-    text="Phone",
-    variable=check2,
-    onvalue="on",
-    offvalue="off",
-    text_color="black",
-    fg_color="#FE019A",
-    border_color="#FE019A"
-)
-checkbox2.pack(pady=5)
-
-checkbox3 = ctk.CTkCheckBox(
-    main_frame,
-    text="Tablet",
-    variable=check3,
-    onvalue="on",
-    offvalue="off",
-    text_color="black",
-    fg_color="#FE019A",
-    border_color="#FE019A"
-)
-checkbox3.pack(pady=5)
-
-products_btn = ctk.CTkButton(
-    main_frame,
-    text="Create order",
-    command=products,
-    corner_radius=30,
+    text="Create Order",
+    command=create_order,
     text_color="white",
     fg_color="#FF7CB0"
 )
-products_btn.pack(pady=20)
-
-root.mainloop()
-
+create_order_btn.pack(pady=20)
