@@ -27,7 +27,7 @@ class JsonService:
         data = [product.to_dict() for product in products]
 
         with open(filename, "w") as file:
-            json.dump(data, file, indent=4)
+            json.dump(data, file, indent=1)
 
     def load_products(
             self,
@@ -37,6 +37,7 @@ class JsonService:
             data = json.load(file)
 
         return [Product.from_dict(item) for item in data]
+
 
 class OrderJsonService:
     def save_order(
@@ -56,7 +57,7 @@ class OrderJsonService:
         existing_data.extend(new_data)
 
         with open(filename, "w") as file:
-            json.dump(existing_data, file, indent=4)
+            json.dump(existing_data, file, indent=1)
 
     def load_order(
             self,

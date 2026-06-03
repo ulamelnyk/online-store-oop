@@ -107,13 +107,13 @@ class User:
         self.orders = []
 
         if not username:
-            raise ValueError("Username cannot be empty")
+            raise ValueError("Please enter your username")
 
         if "@" not in email:
-            raise ValueError("Invalid email format")
+            raise ValueError("Please enter a valid email address (must contain @)")
 
         if not address:
-            raise ValueError("Address cannot be empty")
+            raise ValueError("Please enter your address")
 
     def add_order(self, order: Order) -> None:
         self.orders.append(order)
